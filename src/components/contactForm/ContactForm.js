@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import contactActive from '../../redux/contact/contactActive';
+import contactActions from '../../redux/contact/contactActions';
 import s from './ContactForm.module.css';
 
 class ContactForm extends Component {
@@ -65,7 +65,7 @@ class ContactForm extends Component {
 }
 
 const mapDispatchToprops = {
-  onAddContact: contactActive.addContact,
+  onAddContact: contactActions.addContact,
 };
 
 export default connect(null, mapDispatchToprops)(ContactForm);

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import contactActive from '../redux/contact/contactActive';
 
 import Logo from './Logo/Logo';
 import Section from './section/Section';
@@ -34,7 +33,7 @@ class App extends Component {
 
   render() {
     const { alert } = this.state;
-    const { contact } = this.props;
+    const { contacts } = this.props;
 
     return (
       <>
@@ -44,9 +43,9 @@ class App extends Component {
           <ContactForm />
         </Section>
 
-        {contact && (
+        {contacts && (
           <Section title="Contacts">
-            <Filter isVisible={contact.length > 1 ? true : false} />
+            <Filter isVisible={contacts.length > 1 ? true : false} />
             <PhoneList />
           </Section>
         )}
@@ -57,7 +56,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    contact: state.contact.items,
+    contacts: state.contact.items,
   };
 };
 

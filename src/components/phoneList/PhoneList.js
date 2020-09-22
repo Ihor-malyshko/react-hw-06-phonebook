@@ -1,7 +1,7 @@
 import React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
-import contactActive from '../../redux/contact/contactActive';
+import contactActions from '../../redux/contact/contactActions';
 import s from './PhoneList.module.css';
 
 const filterContacs = (items, filter) => {
@@ -45,7 +45,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToprops = {
-  onRemoveContact: contactActive.removeContact,
+  onRemoveContact: contactActions.removeContact,
 };
 
 export default connect(mapStateToProps, mapDispatchToprops)(PhoneList);

@@ -1,7 +1,7 @@
 import React from 'react';
 import withTransition from '../hoc/withTransition';
 import { connect } from 'react-redux';
-import contactActive from '../../redux/contact/contactActive';
+import contactActions from '../../redux/contact/contactActions';
 import s from './Filter.module.css';
 
 const Filter = props => {
@@ -29,7 +29,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToprops = {
-  onFilterChannge: contactActive.inputFilterChannge,
+  onFilterChannge: contactActions.changeFilter,
 };
 
 export default connect(
