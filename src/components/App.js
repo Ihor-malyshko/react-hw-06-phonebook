@@ -32,38 +32,22 @@ class App extends Component {
   //   });
   // };
 
-  getSearchContacs = () => {
-    const { filter, contacts } = this.props;
-    const normalizeSearch = filter.toLowerCase();
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizeSearch),
-    );
-  };
-
   render() {
     const { alert } = this.state;
-    const { contacts } = this.props;
+    const { contact } = this.props;
 
     return (
       <>
         <Logo />
         <Section>
           <Alert isVisible={alert} />
-          <ContactForm onAddContact={this.props.onAddContact} />
+          <ContactForm />
         </Section>
 
-        {contacts && (
+        {contact && (
           <Section title="Contacts">
-            <Filter
-              isVisible={contacts.length > 1 ? true : false}
-              onSearch={event => this.props.onFilterChannge(event.target.value)}
-            />
-
-            <PhoneList
-              contacts={this.getSearchContacs()}
-              onRemoveContact={this.props.onRemoveContact}
-            />
+            <Filter isVisible={contact.length > 1 ? true : false} />
+            <PhoneList />
           </Section>
         )}
       </>
@@ -73,15 +57,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    contacts: state.contact.items,
-    filter: state.contact.filter,
+    contact: state.contact.items,
   };
 };
 
-const mapDispatchToprops = {
-  onAddContact: contactActive.addContact,
-  onRemoveContact: contactActive.removeContact,
-  onFilterChannge: contactActive.inputFilterChannge,
-};
-
-export default connect(mapStateToProps, mapDispatchToprops)(App);
+export default connect(mapStateToProps, null)(App);

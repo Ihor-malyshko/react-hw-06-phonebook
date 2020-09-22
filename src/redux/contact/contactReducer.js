@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { v4 as uuidv4 } from 'uuid';
 
 import { ADDCONTACT, REMOVECONTACT, CHANGE_FILTER } from './contactTypes';
 import defContacts from '../../assets/defContacts.json';
@@ -14,13 +13,12 @@ const setDefContact = () => {
   }
 };
 
-const contactsReducer = (state = setDefContact(), { type, payload }) => {
+const items = (state = setDefContact(), { type, payload }) => {
   switch (type) {
     case ADDCONTACT:
-      const newContact = { id: uuidv4(), ...payload };
       return state.some(el => el.name === payload.name)
         ? state
-        : [newContact, ...state];
+        : [payload.contact, ...state];
 
     case REMOVECONTACT:
       return state.filter(({ id }) => id !== payload.id);
@@ -30,7 +28,7 @@ const contactsReducer = (state = setDefContact(), { type, payload }) => {
   }
 };
 
-const filterReducer = (state = '', { type, payload }) => {
+const filter = (state = '', { type, payload }) => {
   switch (type) {
     case CHANGE_FILTER:
       return payload.filter;
@@ -41,6 +39,6 @@ const filterReducer = (state = '', { type, payload }) => {
 };
 
 export default combineReducers({
-  items: contactsReducer,
-  filter: filterReducer,
+  items,
+  filter,
 });

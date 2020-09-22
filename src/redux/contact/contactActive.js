@@ -1,11 +1,15 @@
 import { ADDCONTACT, REMOVECONTACT, CHANGE_FILTER } from './contactTypes';
+import { v4 as uuidv4 } from 'uuid';
 
 const addContact = ({ name, number }) => {
   return {
     type: ADDCONTACT,
     payload: {
-      name,
-      number,
+      contact: {
+        id: uuidv4(),
+        name,
+        number,
+      },
     },
   };
 };
