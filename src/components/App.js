@@ -19,18 +19,6 @@ class App extends Component {
     }
   }
 
-  // addContact = ({ name, number }) => {
-  //   this.setState(prevState => {
-  //     if (this.state.contacts.some(el => el.name === name)) {
-  //       this.setState(() => this.setState({ alert: true }));
-  //       setTimeout(() => this.setState({ alert: false }), 2000);
-  //     } else {
-  //       const newContact = { id: uuidv4(), name, number };
-  //       return { contacts: [newContact, ...prevState.contacts] };
-  //     }
-  //   });
-  // };
-
   render() {
     const { alert } = this.state;
     const { contacts } = this.props;
